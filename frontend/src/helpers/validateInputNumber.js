@@ -13,13 +13,14 @@ export function formatNumberWithCommas(number) {
     //     }
     //     answer = str[i] + answer;
     // }
-    return answer;
+    return number;
 }
 
 export const formatNumberWithDots = (value) => {
-    if (value === undefined || value === null) return '';
+    // if (value === undefined || value === null) return '';
     
-    const str = value.toString(); // гарантируем строку
-    const cleanValue = str.replace(/\./g, '');
-    return cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  };
+    // const str = value.toString(); // гарантируем строку
+    // const cleanValue = str.replace(/\./g, '');
+    // return cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return value;
+};

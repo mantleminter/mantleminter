@@ -1,0 +1,389 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes slow-rotate {
+  from {
+    transform: rotate(0deg) scale(var(--t-scale, 1));
+  }
+  to {
+    transform: rotate(360deg) scale(var(--t-scale, 1));
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  color: white;
+  background: black;
+    scroll-behavior: smooth;
+  overscroll-behavior: auto;
+  height: 100%;
+
+}
+
+footer {
+  background: black;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: black;
+  overflow: hidden;
+}
+
+header{
+      backdrop-filter: blur(20px);
+}
+
+.background-element {
+  position: fixed;
+  top: 0;
+  right: -40px;
+  width: 50%;
+  height: 100vh;
+  background-image: url(/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  animation: slow-rotate 180s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(12px);
+}
+
+@keyframes slow-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .background-element {
+    width: 100%;
+    opacity: 0.3;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-overlay {
+  animation: modalFadeIn 0.2s ease-out forwards;
+}
+
+.modal-content {
+  animation: modalScaleIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.coin-grid-item {
+  opacity: 0;
+  animation: fadeInScale 0.5s ease-out forwards;
+}
+
+.coin-grid-item:nth-child(1) { animation-delay: 0ms; }
+.coin-grid-item:nth-child(2) { animation-delay: 250ms; }
+.coin-grid-item:nth-child(3) { animation-delay: 500ms; }
+.coin-grid-item:nth-child(4) { animation-delay: 750ms; }
+.coin-grid-item:nth-child(5) { animation-delay: 1000ms; }
+.coin-grid-item:nth-child(6) { animation-delay: 1250ms; }
+.coin-grid-item:nth-child(7) { animation-delay: 1500ms; }
+.coin-grid-item:nth-child(8) { animation-delay: 1750ms; }
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(calc(-100% - 40px));
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100% + 40px));
+    opacity: 0;
+  }
+}
+
+.coin-transition {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.coin-exit {
+  animation: slideOutToRight 1s ease-in forwards;
+}
+
+.coin-container {
+  overflow: hidden;
+}
+
+.glass-card {
+  background: rgba(26, 26, 26, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Remove default focus styles */
+
+
+html, body {
+  -webkit-overflow-scrolling: touch; /* Включает отскок */
+  overscroll-behavior: none; /* Отключаем стандартное поведение прокрутки */
+}
+
+input:focus,
+input:focus-visible,
+input:focus-within {
+  outline: none !important;
+}
+
+/* Only show focus styles when no owner or for the last input */
+input:not([readonly]):focus {
+  border-color: white !important;
+  box-shadow: 0 0 0 1px white !important;
+}
+
+/* Disable iOS default styles */
+input {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 9999px;
+}
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Custom scrollbar for modal content */
+.modal-content ::-webkit-scrollbar {
+  width: 3px;
+}
+
+.modal-content ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1.5px;
+}
+
+.modal-content ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+footer, header {
+  position: relative;
+}
+
+.pixel-text {
+  font-family: 'Pixelify Sans', system-ui;
+  font-size: 0.9em;
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ripple-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Wallet Dropdown Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wallet-dropdown {
+  animation: slideDown 0.2s ease-out forwards;
+}
+
+.tooltip {
+  position: absolute;
+  background: #C58D00;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 440px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: -45px;
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+  z-index: 9999;
+  display: none;
+  color: black;
+}
+
+.warning-icon {
+  cursor: help;
+  position: relative;
+  display: inline-block;
+  margin-right: 4px;
+  z-index: 9999;
+}
+
+.warning-icon:hover .tooltip {
+  display: flex;
+  visibility: visible;
+}
+
+@media (max-width: 700px) {
+  .tokenModalAdap{
+    padding: 10px 0 !important;
+  }
+
+  .modal-content {
+    max-width: 100% !important;
+  }
+
+  .coin-container {
+    max-width: 290px !important;
+    height: 110px !important;
+    margin: 5px auto !important;
+  }
+
+  .modalTokenHeaderAdap{
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .pulse{
+    width: 80px;  
+    height: 80px;
+  }
+
+  .coin-container h3{
+    font-size: '17px !important'
+  }
+
+  .coins-frame{
+    height: 310px !important;
+  }
+
+  .coin-title{
+    height: 120px !important;
+  }
+}
+
+.modal-body::-webkit-scrollbar {
+
+  display: none;
+}
+
+.modal-container {
+  overflow: hidden;
+  max-width: 486px;
+  width: 90%;
+  border-radius: 26px;
+}
+
+.modal-body {
+  width: 100%!important;
+}
